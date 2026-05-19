@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shekhaina Veviro — Customer Experience Professional</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f8f4ee;
+    --warm-white: #fdfaf6;
+    --ink: #1a1410;
+    --espresso: #2c1f14;
+    --terracotta: #c4623a;
+    --gold: #d4a853;
+    --sage: #7a9e7e;
+    --muted: #8a7d72;
+    --light-line: #e8e0d5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+    padding: 1.2rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(248,244,238,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--light-line);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700; letter-spacing: 0.02em;
+    color: var(--espresso);
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--muted); text-decoration: none; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--terracotta); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    padding: 7rem 4rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; right: -120px; top: 50%; transform: translateY(-50%);
+    width: 620px; height: 620px;
+    background: radial-gradient(ellipse, rgba(196,98,58,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em;
+    color: var(--terracotta); font-weight: 500; margin-bottom: 1.2rem;
+    opacity: 0; animation: fadeUp 0.7s 0.2s ease forwards;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5.5vw, 5.5rem);
+    line-height: 1.05; color: var(--espresso); margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp 0.7s 0.35s ease forwards;
+  }
+  .hero h1 em { color: var(--terracotta); font-style: italic; }
+  .hero-sub {
+    font-size: 1.05rem; line-height: 1.75; color: var(--muted);
+    max-width: 460px; margin-bottom: 2.5rem;
+    opacity: 0; animation: fadeUp 0.7s 0.5s ease forwards;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.7s 0.65s ease forwards;
+  }
+  .btn-primary {
+    background: var(--terracotta); color: #fff;
+    padding: 0.85rem 2rem; border-radius: 2px;
+    text-decoration: none; font-size: 0.82rem;
+    text-transform: uppercase; letter-spacing: 0.12em; font-weight: 500;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--espresso); transform: translateY(-2px); }
+  .btn-ghost {
+    border: 1.5px solid var(--ink); color: var(--ink);
+    padding: 0.85rem 2rem; border-radius: 2px;
+    text-decoration: none; font-size: 0.82rem;
+    text-transform: uppercase; letter-spacing: 0.12em; font-weight: 500;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+  }
+  .btn-ghost:hover { background: var(--ink); color: var(--cream); transform: translateY(-2px); }
+
+  /* Hero right — decorative stat blocks */
+  .hero-right {
+    display: flex; flex-direction: column; align-items: flex-end; gap: 1.5rem;
+    padding-left: 3rem;
+    opacity: 0; animation: fadeUp 0.8s 0.7s ease forwards;
+  }
+  .stat-card {
+    background: var(--warm-white);
+    border: 1px solid var(--light-line);
+    border-radius: 4px;
+    padding: 1.4rem 2rem;
+    text-align: center; width: 200px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem; color: var(--terracotta);
+  }
+  .stat-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-top: 0.3rem; }
+
+  /* ── DIVIDER ── */
+  .divider { border: none; border-top: 1px solid var(--light-line); margin: 0 4rem; }
+
+  /* ── SECTION BASE ── */
+  section { padding: 6rem 4rem; }
+  .section-label {
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.18em;
+    color: var(--terracotta); margin-bottom: 0.8rem; font-weight: 500;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    color: var(--espresso); margin-bottom: 3.5rem;
+    max-width: 600px;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .about-text p { font-size: 1rem; line-height: 1.85; color: #4a3e35; margin-bottom: 1.2rem; }
+  .about-visual {
+    background: var(--warm-white);
+    border: 1px solid var(--light-line);
+    border-radius: 4px; padding: 2.5rem;
+  }
+  .about-visual h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; margin-bottom: 1.8rem; color: var(--espresso);
+  }
+  .skill-row { margin-bottom: 1.2rem; }
+  .skill-name { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.4rem; }
+  .skill-bar { height: 3px; background: var(--light-line); border-radius: 2px; overflow: hidden; }
+  .skill-fill { height: 100%; background: linear-gradient(90deg, var(--terracotta), var(--gold)); border-radius: 2px; animation: grow 1.2s ease forwards; transform-origin: left; }
+  @keyframes grow { from { width: 0; } }
+
+  /* ── SERVICES ── */
+  .services-bg { background: var(--warm-white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .service-card {
+    border: 1px solid var(--light-line);
+    border-radius: 4px; padding: 2.2rem 2rem;
+    background: var(--cream);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.07); }
+  .service-icon { font-size: 1.8rem; margin-bottom: 1.2rem; }
+  .service-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--espresso); margin-bottom: 0.8rem; }
+  .service-card p { font-size: 0.9rem; line-height: 1.7; color: var(--muted); }
+
+  /* ── EXPERIENCE ── */
+  .timeline { max-width: 780px; }
+  .timeline-item { display: grid; grid-template-columns: 160px 1fr; gap: 2.5rem; margin-bottom: 3rem; position: relative; }
+  .timeline-item::before {
+    content: ''; position: absolute; left: 160px; top: 8px; bottom: -3rem;
+    width: 1px; background: var(--light-line);
+  }
+  .timeline-item:last-child::before { display: none; }
+  .timeline-date { font-size: 0.8rem; color: var(--muted); padding-top: 0.2rem; text-align: right; }
+  .timeline-dot {
+    position: absolute; left: 154px; top: 6px;
+    width: 13px; height: 13px; border-radius: 50%;
+    background: var(--terracotta); border: 2px solid var(--cream);
+  }
+  .timeline-body { padding-left: 1.8rem; }
+  .timeline-role { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--espresso); margin-bottom: 0.2rem; }
+  .timeline-company { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--terracotta); margin-bottom: 0.8rem; }
+  .timeline-body ul { list-style: none; }
+  .timeline-body li { font-size: 0.9rem; line-height: 1.7; color: #4a3e35; padding-left: 1.2rem; position: relative; margin-bottom: 0.4rem; }
+  .timeline-body li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-bg { background: var(--espresso); }
+  .testimonials-bg .section-label { color: var(--gold); }
+  .testimonials-bg .section-title { color: var(--cream); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1200px; }
+  .testi-card {
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px; padding: 2.2rem;
+    background: rgba(255,255,255,0.05);
+  }
+  .testi-quote {
+    font-size: 2.5rem; color: var(--terracotta); line-height: 1;
+    font-family: 'Playfair Display', serif; margin-bottom: 1rem;
+  }
+  .testi-text { font-size: 0.92rem; line-height: 1.8; color: rgba(248,244,238,0.8); margin-bottom: 1.8rem; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: 1rem; }
+  .testi-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--terracotta), var(--gold));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 1rem; color: #fff;
+    flex-shrink: 0;
+  }
+  .testi-name { font-weight: 500; font-size: 0.88rem; color: var(--cream); }
+  .testi-role { font-size: 0.78rem; color: rgba(248,244,238,0.5); }
+  .stars { color: var(--gold); font-size: 0.8rem; margin-bottom: 0.8rem; }
+
+  /* ── CONTACT ── */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+  .contact-info p { font-size: 1rem; line-height: 1.8; color: var(--muted); margin-bottom: 2rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1rem;
+    font-size: 0.9rem; color: var(--ink); text-decoration: none;
+    padding: 1rem 1.2rem; border: 1px solid var(--light-line);
+    border-radius: 4px; background: var(--warm-white);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .contact-link:hover { border-color: var(--terracotta); transform: translateX(4px); }
+  .contact-icon { font-size: 1.2rem; }
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .contact-form input,
+  .contact-form textarea {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white); border: 1px solid var(--light-line);
+    padding: 0.9rem 1.2rem; font-size: 0.9rem; color: var(--ink);
+    border-radius: 4px; outline: none;
+    transition: border-color 0.2s;
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus { border-color: var(--terracotta); }
+  .contact-form textarea { min-height: 140px; resize: vertical; }
+  .contact-form button {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--terracotta); color: #fff;
+    border: none; padding: 0.9rem 2rem;
+    font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em;
+    font-weight: 500; border-radius: 2px; cursor: pointer;
+    transition: background 0.2s; align-self: flex-start;
+  }
+  .contact-form button:hover { background: var(--espresso); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink); color: rgba(248,244,238,0.5);
+    padding: 2rem 4rem; text-align: center;
+    font-size: 0.8rem; letter-spacing: 0.06em;
+  }
+  footer span { color: var(--terracotta); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 2rem; }
+    .nav-links { gap: 1.5rem; }
+    .hero { grid-template-columns: 1fr; padding: 6rem 2rem 3rem; }
+    .hero-right { align-items: flex-start; flex-direction: row; flex-wrap: wrap; padding-left: 0; margin-top: 3rem; }
+    .stat-card { width: 160px; }
+    section { padding: 4rem 2rem; }
+    .divider { margin: 0 2rem; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 100px 1fr; gap: 1.5rem; }
+    .timeline-item::before { left: 100px; }
+    .timeline-dot { left: 93px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Shekhaina Veviro</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Customer Experience &amp; Virtual Assistant</p>
+    <h1>Building <em>loyalty,</em><br>one interaction<br>at a time.</h1>
+    <p class="hero-sub">Versatile customer experience professional with a proven track record across telco, cable, e-commerce, and floral industries. I don't just solve problems — I retain customers and elevate brand trust.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Hire Me</a>
+      <a href="#experience" class="btn-ghost">View Experience</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-card">
+      <div class="stat-num">Tier 3</div>
+      <div class="stat-label">Technical Support</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">5+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">4 <span style="font-size:1.2rem">Industries</span></div>
+      <div class="stat-label">Telco · Cable · E-com · Floral</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label reveal">About Me</p>
+  <h2 class="section-title reveal">A rare blend of heart, hustle, and expertise.</h2>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>I'm Shekhaina, a Customer Experience and Operations professional based in the Philippines. I bring a rare combination of frontline customer service mastery, advanced technical support expertise, and process documentation skill — making me a versatile asset in any customer-facing or remote operations role.</p>
+      <p>Whether it's calming a frustrated escalation, writing an SOP from scratch, or converting a cold inquiry into a loyal client — I show up with composure, empathy, and precision every single time.</p>
+      <p>With a BS in Information Systems, I bridge the gap between technical complexity and crystal-clear communication that customers actually understand.</p>
+    </div>
+    <div class="about-visual reveal">
+      <h3>Core Competencies</h3>
+      <div class="skill-row">
+        <div class="skill-name">Customer Service Excellence</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:97%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">Technical Troubleshooting (Tier 3)</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">Escalation Handling</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">Sales &amp; Customer Retention</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">SOP Documentation &amp; Standardization</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">Billing &amp; Account Management</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:93%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SERVICES -->
+<section id="services" class="services-bg">
+  <p class="section-label reveal">What I Offer</p>
+  <h2 class="section-title reveal">Services tailored for modern remote work.</h2>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">🎧</div>
+      <h3>Customer Support</h3>
+      <p>Inbound and outbound support via chat, email, or phone. I handle billing disputes, account concerns, and complex escalations with professionalism and empathy.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🛠️</div>
+      <h3>Technical Support</h3>
+      <p>Tier 3-level troubleshooting for telco, cable, and SaaS products. I diagnose, resolve, and document complex technical issues that lower-tier agents can't crack.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">📋</div>
+      <h3>SOP Documentation</h3>
+      <p>Clear, compliant, and easy-to-follow Standard Operating Procedures. I collaborate with stakeholders to capture processes and ensure training consistency.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">💼</div>
+      <h3>Virtual Assistant</h3>
+      <p>Email management, scheduling, data entry, CRM updates, and administrative tasks handled with reliability and discretion — freeing you up to focus on growth.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">📈</div>
+      <h3>Sales &amp; Retention</h3>
+      <p>Consultative selling and customer retention strategies with a customer-first mindset. I convert inquiries into loyal clients and save at-risk accounts.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🎓</div>
+      <h3>Agent Mentoring &amp; QA</h3>
+      <p>Subject matter expertise shared with junior agents. I review interactions, provide coaching, and uphold documentation and quality standards across the team.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label reveal">Work History</p>
+  <h2 class="section-title reveal">A career built on every kind of customer challenge.</h2>
+  <div class="timeline">
+
+    <div class="timeline-item reveal">
+      <div class="timeline-date">Current</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-body">
+        <div class="timeline-role">Sales Agent</div>
+        <div class="timeline-company">HomeaGlow</div>
+        <ul>
+          <li>Drive sales and client acquisition through a consultative, customer-first approach</li>
+          <li>Build rapport with prospects and convert inquiries into satisfied, repeat customers</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-date">Prior Role</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-body">
+        <div class="timeline-role">SOP Agent</div>
+        <div class="timeline-company">Avas Flower</div>
+        <ul>
+          <li>Authored, reviewed, and maintained Standard Operating Procedures ensuring clarity and compliance</li>
+          <li>Collaborated with stakeholders to capture process details and drive continuous improvement</li>
+          <li>Maintained version control and supported training consistency across the organization</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-date">Prior Role</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-body">
+        <div class="timeline-role">Tier 3 Technical Support / CSR</div>
+        <div class="timeline-company">Panasiatic Solutions — Telco Account</div>
+        <ul>
+          <li>Handled advanced technical issues escalated from lower tiers with high resolution accuracy</li>
+          <li>Mentored junior agents and served as subject-matter resource for complex cases</li>
+          <li>Managed billing, sales upselling, and customer retention with top-tier satisfaction scores</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-date">Prior Role</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-body">
+        <div class="timeline-role">Customer Service / Tech Support Rep</div>
+        <div class="timeline-company">Transcom — Cable Account</div>
+        <ul>
+          <li>Resolved inbound billing, service, and account concerns with accuracy and professionalism</li>
+          <li>Handled escalations calmly and effectively, maintaining customer trust and loyalty</li>
+          <li>Upheld strict documentation standards and company policy adherence</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="testimonials-bg">
+  <p class="section-label reveal">Testimonials</p>
+  <h2 class="section-title reveal">What colleagues &amp; clients say.</h2>
+  <div class="testimonials-grid">
+
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <div class="testi-quote">"</div>
+      <p class="testi-text">Shekhaina is one of those rare agents who truly sets the standard. Her work ethic is unmatched — she shows up every single day with the same level of drive and professionalism. She consistently hits and exceeds her performance metrics, and has been a top agent on our floor quarter after quarter. She doesn't just meet expectations; she redefines them. Any team would be lucky to have her.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">M</div>
+        <div>
+          <div class="testi-name">Marian Seva</div>
+          <div class="testi-role">Training Manager, Transcom</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <div class="testi-quote">"</div>
+      <p class="testi-text">From a quality assurance standpoint, Shekhaina is exactly the kind of agent you want on your team. She is genuinely open to feedback — not just receptive, but proactive about it. What impresses me most is how efficiently she applies coaching to her actual calls. The improvement is immediate and consistent. She's someone you can always count on to deliver, and that reliability is rare. She is the one you can rely on.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">C</div>
+        <div>
+          <div class="testi-name">Cindy Joan de Dios</div>
+          <div class="testi-role">Quality Assurance, Transcom</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <div class="testi-quote">"</div>
+      <p class="testi-text">We are thankful for Shekhaina's time and dedication to the project, and we continue to wish her the best in future endeavors. Her commitment and professionalism throughout our engagement made a real difference — it was a pleasure working with her.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">U</div>
+        <div>
+          <div class="testi-name">Upwork Client</div>
+          <div class="testi-role">Verified Client · 5-Star Review</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label reveal">Get In Touch</p>
+  <h2 class="section-title reveal">Let's work together.</h2>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <p>I'm open to full-time remote roles, freelance projects, and long-term virtual assistant contracts. Whether you need someone to manage your customer operations or become a core part of your remote team — I'm ready.</p>
+      <div class="contact-links">
+        <a href="mailto:khainav21@gmail.com" class="contact-link">
+          <span class="contact-icon">✉️</span>
+          <span>khainav21@gmail.com</span>
+        </a>
+        <a href="#" class="contact-link">
+          <span class="contact-icon">🌏</span>
+          <span>Philippines (Open to Remote Worldwide)</span>
+        </a>
+        <a href="#" class="contact-link">
+          <span class="contact-icon">💼</span>
+          <span>Available for Immediate Start</span>
+        </a>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="contact-form">
+        <input type="text" placeholder="Your Name">
+        <input type="email" placeholder="Your Email">
+        <input type="text" placeholder="Subject (e.g. VA Role, Customer Support)">
+        <textarea placeholder="Tell me about the role or project..."></textarea>
+        <button type="button" onclick="alert('Thanks for reaching out! Please email khainav21@gmail.com directly to connect.')">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span>Shekhaina Veviro</span> &nbsp;·&nbsp; Customer Experience Professional &nbsp;·&nbsp; Philippines</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
